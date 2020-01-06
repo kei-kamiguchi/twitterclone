@@ -35,9 +35,14 @@ class TweetsController < ApplicationController
     end
   end
 
-
   def show
     @tweet=Tweet.find(params[:id])
+  end
+
+  def destroy
+    @tweet=Tweet.find(params[:id])
+    @tweet.destroy
+    redirect_to tweets_path, notice: 'ツイートを削除しました'
   end
 
   private
