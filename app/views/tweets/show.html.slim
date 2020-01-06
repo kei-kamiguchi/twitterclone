@@ -1,2 +1,8 @@
-h1 Tweets#show
-p Find me in app/views/tweets/show.html.slim
+h1 詳細
+
+table.table.table-responsive
+  thead-light
+    tr
+      th= Tweet.human_attribute_name(:content)
+    tr
+      td= @tweet.content

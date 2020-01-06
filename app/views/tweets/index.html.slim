@@ -12,7 +12,7 @@ h1 ツイート一覧
     tbody
       - @tweets.each do |tweet|
         tr
-          td= tweet.content.truncate(10)
+          td= link_to tweet.content.truncate(10), tweet
           td= tweet.created_at
           td
             = link_to '編集', edit_tweet_path(tweet), class: 'btn btn-primary mr-3'
