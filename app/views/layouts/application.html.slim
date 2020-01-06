@@ -2,7 +2,7 @@ doctype html
 html
   head
     title
-      | Twitterclone
+      | Diver
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -12,5 +12,15 @@ html
       .navbar-brand
         = image_tag 'logo.png', width: '50px', heigh: '50px'
       .nav-text tweet
+
+      ul.navbar-nav.ml-auto
+        li.nav-item= link_to '作成', new_tweet_path, class: 'nav-link'
+        li.nav-item= link_to 'ツイート一覧', tweets_path, class: 'nav-link'
+
     .container
+      - if flash.notice.present?
+        .alert.alert-success= flash.notice
       = yield
+    footer.footer
+      .container
+        p.text-muted Place sticky footer content here.
