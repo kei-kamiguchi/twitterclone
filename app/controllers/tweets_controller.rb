@@ -8,6 +8,16 @@ class TweetsController < ApplicationController
     @tweet=Tweet.new
   end
 
+  def create
+    @tweet=Tweet.new(tweet_params)
+    if @tweet.save
+      redirect_to tweets_path, notice: "ツイートが作成されました"
+    else
+      render :new
+    end
+  end
+
+
   def confirm
   end
 
@@ -16,4 +26,11 @@ class TweetsController < ApplicationController
 
   def show
   end
+
+  private
+
+  def tweet_params
+    params.require(:tweet).permit(:context)
+  end
+
 end
