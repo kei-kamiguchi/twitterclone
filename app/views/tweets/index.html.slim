@@ -6,13 +6,13 @@ h1 ツイート一覧
   table.table.table-hover
     thead.thead-default
       tr
-        th= Tweet.human_attribute_name(:context)
+        th= Tweet.human_attribute_name(:content)
         th= Tweet.human_attribute_name(:created_at)
         th
     tbody
       - @tweets.each do |tweet|
         tr
-          td= tweet.context.truncate(10)
+          td= tweet.content.truncate(10)
           td= tweet.created_at
           td
             = link_to '編集', edit_tweet_path(tweet), class: 'btn btn-primary mr-3'

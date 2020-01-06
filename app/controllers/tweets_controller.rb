@@ -19,6 +19,7 @@ class TweetsController < ApplicationController
 
 
   def confirm
+    @tweet=Tweet.new(tweet_params)
   end
 
   def edit
@@ -30,7 +31,7 @@ class TweetsController < ApplicationController
   private
 
   def tweet_params
-    params.require(:tweet).permit(:context)
+    params.require(:tweet).permit(:content)
   end
 
 end
