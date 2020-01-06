@@ -23,7 +23,18 @@ class TweetsController < ApplicationController
   end
 
   def edit
+    @tweet=Tweet.find(params[:id])
   end
+
+  def update
+    @tweet=Tweet.find(params[:id])
+    if @tweet.update(tweet_params)
+      redirect_to tweets_path, notice: "ツイートを編集しました"
+    else
+      render :edit
+    end
+  end
+
 
   def show
   end
