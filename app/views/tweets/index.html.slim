@@ -1,2 +1,19 @@
-h1 Tweets#index
-p Find me in app/views/tweets/index.html.slim
+h1 ツイート一覧
+
+- if Tweet.count==0
+  p ツイートがありません。
+- else
+  table.table.table-hover
+    thead.thead-default
+      tr
+        th= Tweet.human_attribute_name(:context)
+        th= Tweet.human_attribute_name(:created_at)
+        th
+    tbody
+      - @tweets.each do |tweet|
+        tr
+          td= tweet.context.truncate(10)
+          td= tweet.created_at
+          td
+            = link_to '編集', edit_tweet_path(tweet), class: 'btn btn-primary mr-3'
+            = link_to '削除', tweet, method: :delete, data: { confirm: 'このツイートを削除します。よろしいですか？'}, class: 'btn btn-danger'
