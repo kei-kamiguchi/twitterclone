@@ -1,8 +1,9 @@
 h1 詳細
 
 table.table.table-responsive
-  thead-light
+  thead.thead-light
     tr
       th= Tweet.human_attribute_name(:content)
+  tbody
     tr
       td= @tweet.content
